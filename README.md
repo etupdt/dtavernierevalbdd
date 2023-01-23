@@ -24,4 +24,4 @@ A lancer par le user admin_cinema, il cré les contraintes.
 
 ### - Insertion des jeux de tests : 03_admin_insert_cinema.sql
 
-A lancer par le user admin_cinema, il cré les enregistrements de tests dans les différentes tables.
+A lancer par le user admin_cinema, il crée les enregistrements de tests dans les différentes tables.
