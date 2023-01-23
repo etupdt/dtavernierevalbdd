@@ -5,19 +5,10 @@ CREATE DATABASE cinema;
 
 DROP USER IF EXISTS admin_cinema@'%';
 DROP USER IF EXISTS user_cinema@localhost;
+DROP USER IF EXISTS user_seance_cinema@localhost;
 DROP USER IF EXISTS service@localhost;
 
 USE cinema;
-
-DROP TABLE IF EXISTS tickets;
-DROP TABLE IF EXISTS cinema_price;
-DROP TABLE IF EXISTS cinema_users;
-DROP TABLE IF EXISTS cinema_administrators;
-DROP TABLE IF EXISTS persons;
-DROP TABLE IF EXISTS movie_shows;
-DROP TABLE IF EXISTS movies;
-DROP TABLE IF EXISTS cinema_rooms;
-DROP TABLE IF EXISTS movie_theaters;
 
 CREATE TABLE IF NOT EXISTS movie_theaters (
 	id INT(11) AUTO_INCREMENT PRIMARY KEY,
@@ -92,9 +83,15 @@ CREATE USER IF NOT EXISTS service@localhost IDENTIFIED BY 'pa$$w0rd';
 
 GRANT SELECT, SHOW VIEW, LOCK TABLES ON cinema.* TO service@localhost;
 
+CREATE USER IF NOT EXISTS user_seance_cinema@localhost IDENTIFIED BY 'pa$$w0rd';
+
+GRANT SELECT, UPDATE, DELETE, INSERT ON cinema.movie_shows TO user_seance_cinema@localhost;
+GRANT SELECT, UPDATE, DELETE, INSERT ON cinema.movies TO user_seance_cinema@localhost;
+GRANT SELECT, UPDATE, DELETE, INSERT ON cinema.tickets TO user_seance_cinema@localhost;
+
 CREATE USER IF NOT EXISTS user_cinema@localhost IDENTIFIED BY 'pa$$w0rd';
 
-GRANT SELECT, INSERT ON cinema.movie_shows TO user_cinema@localhost;
-GRANT SELECT ON cinema.* TO user_cinema@localhost;
+GRANT SELECT, UPDATE, DELETE, INSERT ON cinema.movies TO user_cinema@localhost;
+GRANT SELECT, UPDATE, DELETE, INSERT ON cinema.tickets TO user_cinema@localhost;
 
 FLUSH PRIVILEGES;

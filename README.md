@@ -14,7 +14,8 @@ Pour créer la database, les étapes doivent être exécutées dans l'ordre. l'e
 A lancer par le user root, il crée la database, les tables et les users :
 
 - admin_cinema : user ayant tous les droits sur la database, dont celui de restauration de la database
-- user_cinema : les employés des cinémas qui ont les droits de mise à jour sur les tables
+- user_seance_cinema : les employés des cinémas qui ont les droits de mise à jour sur les tables.
+- user_cinema : les employés des cinémas qui n'ont pas le droit de créer des seances.
 - service : user de service executant les dumps de la database
 
 ### - Modification des tables pour mise en place des contraintes : 02_root_constraints_database_cinema.sql
